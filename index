@@ -4,996 +4,811 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fff3f6">
+<meta name="theme-color" content="#fff0f5">
 <title>A Little Gift for You ♡</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root {
-    --pink: #f7c4d0;
-    --rose: #e78da5;
-    --dark: #b95370;
-    --cream: #fffaf4;
-    --text: #795761;
-    --border: #f0d2db;
+  --pink: #f6a9c4;
+  --pink-light: #ffe3ed;
+  --pink-pale: #fff0f5;
+  --rose: #c85f86;
+  --text: #70495a;
+  --white: #ffffff;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Quicksand', sans-serif;
-    color: var(--text);
-    background:
-        radial-gradient(circle at 10% 10%, #ffe0e9, transparent 35%),
-        radial-gradient(circle at 90% 90%, #ffe8d9, transparent 35%),
-        linear-gradient(135deg, #fff7f8, #fff0f4);
-    overflow-x: hidden;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--pink-pale);
 }
 
-button,
-a {
-    font-family: inherit;
+button, a {
+  font: inherit;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.screen {
-    display: none;
-    min-height: 100vh;
-    padding: 65px 18px 75px;
-    align-items: center;
-    justify-content: center;
+.page {
+  display: none;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 35px 18px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.screen.active {
-    display: flex;
-    animation: fadeIn .65s ease;
+.page.active {
+  display: flex;
+  animation: fadeIn .6s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.container {
+  width: min(850px, 100%);
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .card {
-    width: 100%;
-    max-width: 780px;
-    padding: clamp(35px, 6vw, 60px) 25px;
-    position: relative;
-    text-align: center;
-    background: rgba(255, 250, 247, .94);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    box-shadow: 0 20px 60px #c46b7b18;
+  background: rgba(255,255,255,.8);
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: clamp(25px, 6vw, 55px);
+  box-shadow: 0 18px 55px rgba(160,80,110,.09);
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border: 1px dashed #e9b5c3;
-    border-radius: 20px;
-    pointer-events: none;
-}
-
-h1,
-h2,
-p {
-    position: relative;
-    z-index: 1;
+h1, h2 {
+  font-family: 'Playfair Display', serif;
 }
 
 h1 {
-    color: var(--dark);
-    font-size: clamp(2.4rem, 8vw, 4.4rem);
-    line-height: 1.12;
-    margin: 20px 0;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  line-height: 1.12;
+  margin: 18px 0;
 }
 
 h2 {
-    color: var(--dark);
-    font-size: clamp(1.7rem, 5vw, 2.7rem);
-    margin: 15px 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin: 12px 0;
 }
 
-.script {
-    font-family: 'Sacramento', cursive;
-    color: var(--rose);
-    font-weight: 400;
+p {
+  line-height: 1.8;
 }
 
 .eyebrow {
-    color: #b66e82;
-    font-size: .75rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
+  color: var(--rose);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
 }
 
-.subtitle {
-    max-width: 510px;
-    margin: 20px auto 28px;
-    line-height: 1.9;
-    font-size: .98rem;
+.description {
+  color: #967283;
+  max-width: 550px;
+  margin: 0 auto 25px;
 }
 
-.ribbon {
-    font-size: 4rem;
-    position: relative;
-    z-index: 1;
+.pink {
+  color: var(--rose);
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 23px;
+  border: 0;
+  border-radius: 50px;
+  color: white;
+  background: var(--rose);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 7px 20px rgba(200,95,134,.2);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(200,95,134,.3);
+}
+
+.button.secondary {
+  background: white;
+  color: var(--rose);
+  border: 1px solid #f2c2d4;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
 }
 
 .small {
-    font-size: .8rem;
-    color: #a77d86;
-    line-height: 1.7;
+  color: #b18b9b;
+  font-size: .8rem;
+  margin-top: 25px;
 }
 
-.btn {
-    display: inline-block;
-    position: relative;
-    z-index: 2;
-    margin: 7px 4px;
-    padding: 14px 23px;
-    border: none;
-    border-radius: 40px;
-    background: linear-gradient(135deg, #ee9db1, #d96f8b);
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 8px 20px #d96f8b35;
-    transition: .25s;
+.decoration {
+  position: absolute;
+  font-size: 30px;
+  opacity: .65;
+  animation: float 5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px #d96f8b45;
+.decoration.one {
+  top: 12%;
+  left: 9%;
 }
 
-.btn.secondary {
-    background: white;
-    color: var(--dark);
-    border: 1px solid #efc4d0;
-    box-shadow: none;
+.decoration.two {
+  top: 20%;
+  right: 10%;
+  animation-delay: -2s;
 }
 
-.decor {
-    font-size: 1.8rem;
-    position: absolute;
-    animation: float 4s ease-in-out infinite;
-    z-index: 1;
+.decoration.three {
+  bottom: 14%;
+  left: 12%;
+  animation-delay: -1s;
 }
 
-.decor.one {
-    top: 22px;
-    left: 25px;
+.decoration.four {
+  bottom: 12%;
+  right: 12%;
+  animation-delay: -3s;
 }
 
-.decor.two {
-    top: 25px;
-    right: 25px;
-}
+/* GIFT BOX */
 
-.decor.three {
-    bottom: 22px;
-    left: 30px;
+.gift-area {
+  height: 245px;
+  display: grid;
+  place-items: center;
+  margin: 15px auto;
 }
-
-.decor.four {
-    bottom: 20px;
-    right: 30px;
-}
-
-@keyframes float {
-    50% {
-        transform: translateY(-10px) rotate(8deg);
-    }
-}
-
-/* HALAMAN HADIAH */
 
 .gift {
-    width: 230px;
-    height: 200px;
-    margin: 35px auto;
-    position: relative;
-    cursor: pointer;
-    z-index: 1;
+  position: relative;
+  width: 165px;
+  height: 145px;
+  border: 0;
+  background: transparent;
+  transition: transform .3s;
+  filter: drop-shadow(0 12px 10px rgba(180,80,120,.18));
+}
+
+.gift:hover {
+  transform: translateY(-5px);
 }
 
 .gift-box {
-    position: absolute;
-    width: 180px;
-    height: 120px;
-    left: 25px;
-    bottom: 0;
-    background: linear-gradient(135deg, #f8bdcb, #e78da5);
-    border-radius: 8px;
-    box-shadow: 0 12px 25px #c46b7b20;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 145px;
+  height: 95px;
+  background: #f3a0bd;
+  border: 2px solid #e58bab;
+  border-radius: 6px 6px 12px 12px;
 }
 
 .gift-box::before {
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 100%;
-    left: 72px;
-    background: #ffe6eb;
+  content: "";
+  position: absolute;
+  left: 52px;
+  top: 0;
+  height: 100%;
+  width: 35px;
+  background: #fff0f5;
 }
 
 .gift-lid {
-    position: absolute;
-    width: 205px;
-    height: 35px;
-    left: 12px;
-    top: 40px;
-    background: #f5b2c2;
-    border-radius: 6px;
-    transition: .8s;
+  position: absolute;
+  z-index: 2;
+  top: 28px;
+  left: 0;
+  width: 165px;
+  height: 30px;
+  border-radius: 7px;
+  border: 2px solid #e58bab;
+  background: #f8b6ce;
+  transform-origin: 10% 100%;
+  transition: transform .8s;
 }
 
-.gift-lid::after {
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 100%;
-    left: 85px;
-    background: #ffe6eb;
+.bow {
+  position: absolute;
+  top: 2px;
+  left: 61px;
+  z-index: 3;
+  width: 45px;
+  height: 30px;
 }
 
-.gift-bow {
-    position: absolute;
-    top: -5px;
-    left: 90px;
-    font-size: 45px;
-    transition: .8s;
+.bow::before, .bow::after {
+  content: "";
+  position: absolute;
+  width: 23px;
+  height: 17px;
+  border: 5px solid var(--rose);
+  border-radius: 80% 80% 20% 80%;
+}
+
+.bow::after {
+  left: 19px;
+  transform: scaleX(-1);
 }
 
 .gift.open .gift-lid {
-    transform: translateY(-80px) rotate(-12deg);
+  transform: translate(-25px,-65px) rotate(-28deg);
 }
 
-.gift.open .gift-bow {
-    transform: translateY(-80px) rotate(-12deg);
+/* MEMORY GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+  max-width: 740px;
+  margin: 28px auto;
 }
 
-/* HALAMAN KENANGAN */
-
-.memories {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 13px;
-    margin: 30px 0;
-    position: relative;
-    z-index: 1;
+.memory {
+  padding: 10px 10px 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 9px 25px rgba(120,60,90,.1);
+  transform: rotate(var(--tilt));
+  transition: .3s;
 }
 
-.polaroid {
-    background: white;
-    padding: 9px 9px 16px;
-    box-shadow: 0 5px 18px #a84c6818;
-    transform: rotate(-3deg);
+.memory:hover {
+  transform: rotate(0) translateY(-5px);
 }
 
-.polaroid:nth-child(2) {
-    transform: rotate(3deg);
+.memory img {
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #ffe3ed;
+  display: block;
 }
 
-.polaroid:nth-child(3) {
-    transform: rotate(-1deg);
+.memory-title {
+  font-family: 'Playfair Display', serif;
+  display: block;
+  margin-top: 12px;
+  font-size: .95rem;
 }
 
-.photo {
-    height: 145px;
-    display: grid;
-    place-items: center;
-    font-size: 2.8rem;
-    background: linear-gradient(135deg, #ffe0e8, #fff0dc);
+.memory small {
+  color: #b18b9b;
+  font-size: .72rem;
 }
 
-.caption {
-    font-family: 'Sacramento', cursive;
-    font-size: 1.5rem;
-    margin: 10px 0 0;
-}
-
-/* AMPLOP */
+/* ENVELOPE */
 
 .envelope-area {
-    position: relative;
-    width: min(320px, 85vw);
-    height: 225px;
-    margin: 35px auto;
-    cursor: pointer;
-    perspective: 800px;
-    z-index: 1;
+  height: 255px;
+  display: grid;
+  place-items: center;
+  margin: 20px auto;
 }
 
 .envelope {
-    position: absolute;
-    inset: 30px 0 0;
-    background: #ee9eb2;
-    border-radius: 8px;
-    box-shadow: 0 15px 30px #a84c6820;
+  position: relative;
+  width: min(300px, 82vw);
+  height: 185px;
+  border: 0;
+  background: transparent;
+  perspective: 800px;
 }
 
-.envelope::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #e88ba3;
-    clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
-    border-radius: 8px;
+.env-back {
+  position: absolute;
+  inset: 15px 0 0;
+  background: #efa0bc;
+  border-radius: 7px;
 }
 
-.flap {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: #f5b5c4;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transform-origin: top;
-    transition: transform .8s;
-    z-index: 4;
+.env-paper {
+  position: absolute;
+  z-index: 1;
+  left: 9%;
+  bottom: 10px;
+  width: 82%;
+  height: 145px;
+  display: grid;
+  place-items: center;
+  background: #fffdfb;
+  color: var(--rose);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  border-radius: 4px;
+  transition: transform .8s;
 }
 
-.letter-preview {
-    position: absolute;
-    z-index: 2;
-    bottom: 25px;
-    left: 8%;
-    width: 84%;
-    height: 145px;
-    background: #fff9ec;
-    border: 1px solid #eedbc2;
-    display: grid;
-    place-items: center;
-    font-family: 'Sacramento', cursive;
-    font-size: 2rem;
-    transition: transform .8s;
+.env-front {
+  position: absolute;
+  z-index: 2;
+  inset: 50px 0 0;
+  background: #f7c0d3;
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 7px 7px;
+}
+
+.env-flap {
+  position: absolute;
+  z-index: 3;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: #f9d0df;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform .7s;
 }
 
 .seal {
-    position: absolute;
-    z-index: 5;
-    top: 115px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 35px;
-    transition: opacity .3s;
+  position: absolute;
+  z-index: 4;
+  top: 90px;
+  left: calc(50% - 19px);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--rose);
+  transition: opacity .2s;
 }
 
-.envelope-area.open .flap {
-    transform: rotateX(180deg);
+.envelope.open .env-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
 }
 
-.envelope-area.open .letter-preview {
-    transform: translateY(-100px);
+.envelope.open .env-paper {
+  transform: translateY(-80px);
+  transition-delay: .2s;
 }
 
-.envelope-area.open .seal {
-    opacity: 0;
+.envelope.open .seal {
+  opacity: 0;
 }
 
-/* SURAT */
+/* LETTER */
 
-.letter-paper {
-    position: relative;
-    z-index: 1;
-    max-width: 590px;
-    margin: 25px auto;
-    padding: clamp(25px, 6vw, 45px);
-    background: #fff9ec;
-    border: 1px solid #eedbc2;
-    box-shadow: 0 12px 35px #a84c6814;
-    text-align: left;
-    line-height: 1.9;
-    white-space: pre-line;
-    transform: rotate(-.3deg);
+.letter {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: clamp(25px,6vw,50px);
+  background: #fffdfb;
+  border: 1px solid #f5d4e0;
+  border-radius: 9px;
+  box-shadow: 0 15px 45px rgba(120,60,90,.08);
+  text-align: left;
+  position: relative;
 }
 
-.letter-paper::after {
-    content: "♡";
-    position: absolute;
-    top: 12px;
-    right: 17px;
-    color: #d98a9c;
-    font-size: 1.5rem;
+.letter::after {
+  content: "♡";
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  color: #f1b6ca;
+  font-size: 2rem;
+}
+
+.letter p {
+  color: #795869;
 }
 
 .signature {
-    font-family: 'Sacramento', cursive;
-    font-size: 2rem;
-    color: var(--dark);
-    margin-top: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--rose) !important;
+  margin-top: 28px;
 }
 
-/* HALAMAN AKHIR */
+.heart {
+  font-size: 5rem;
+  animation: heartbeat 1.5s infinite;
+  display: inline-block;
+}
 
-.final-heart {
-    font-size: 2.5rem;
-    margin: 25px 0;
-    animation: heartbeat 1.8s infinite;
+.music-button {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #f2bfd1;
+  color: var(--rose);
+  background: white;
+  box-shadow: 0 5px 18px rgba(120,60,90,.15);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+@keyframes float {
+  0%,100% {transform:translateY(0)}
+  50% {transform:translateY(-14px)}
 }
 
 @keyframes heartbeat {
-    50% {
-        transform: scale(1.15);
-    }
+  0%,100% {transform:scale(1)}
+  15% {transform:scale(1.15)}
+  30% {transform:scale(1)}
+  45% {transform:scale(1.1)}
 }
 
-/* FOOTER */
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 12px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    background: #fffaf5ed;
-    border-top: 1px solid #f3d3dc;
-    backdrop-filter: blur(8px);
-    color: #a77d86;
-    font-size: .75rem;
-    z-index: 10;
-}
-
-#musicButton {
-    border: 1px solid #efc4d0;
-    border-radius: 25px;
-    padding: 7px 12px;
-    color: var(--dark);
-    background: white;
-    cursor: pointer;
-}
-
-@media(max-width: 520px) {
-    .card {
-        padding: 40px 18px;
-    }
-
-    .photo {
-        height: 95px;
-        font-size: 2rem;
-    }
-
-    .polaroid {
-        padding: 6px 6px 12px;
-    }
-
-    .caption {
-        font-size: 1.15rem;
-    }
-
-    .memories {
-        gap: 8px;
-    }
-
-    .footer {
-        font-size: .68rem;
-    }
-}
-
-@media(prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-    }
+@media(max-width:600px) {
+  .page {padding:25px 14px}
+  .gallery {gap:8px}
+  .memory {padding:7px 7px 12px}
+  .memory-title {font-size:.78rem}
+  .memory small {font-size:.62rem}
+  .decoration.one {left:4%}
+  .decoration.two {right:4%}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 1. HALAMAN PEMBUKA -->
+<button class="music-button" id="musicButton" type="button" aria-label="Nyalakan musik" title="Musik">♫</button>
 
-<section class="screen active" id="welcome">
-    <div class="card">
-        <span class="decor one">♡</span>
-        <span class="decor two">✧</span>
-        <span class="decor three">🌷</span>
-        <span class="decor four">♡</span>
+<!-- HALAMAN 1 -->
+<section class="page active" id="home">
+  <span class="decoration one">♡</span>
+  <span class="decoration two">✦</span>
+  <span class="decoration three">🌷</span>
+  <span class="decoration four">♡</span>
 
-        <div class="ribbon">🎀</div>
-
-        <div class="eyebrow">a tiny little surprise</div>
-
-        <h1>
-            I made something<br>
-            <span class="script">for you...</span>
-        </h1>
-
-        <p class="subtitle">
-            Ada sesuatu yang ingin aku kasih ke kamu.
-            Hadiah kecil yang kubuat khusus untuk seseorang
-            yang punya tempat spesial di hatiku. ♡
-        </p>
-
-        <button class="btn" onclick="goTo('gift')">
-            Open Your Gift ♡
-        </button>
-
-        <p class="small">
-            dibuat dengan sedikit cinta, khusus untuk kamu ✿
-        </p>
-    </div>
+  <main class="container card">
+    <span class="eyebrow">made with love, just for you</span>
+    <h1>Hi, my favorite<br><span class="pink">person ♡</span></h1>
+    <p class="description">
+      Aku punya sesuatu buat kamu. Nggak besar, tapi aku bikin
+      dengan banyak rasa sayang. Siap buka hadiah kecil ini?
+    </p>
+    <button class="button" type="button" data-go="gift">Buka hadiahmu ♡</button>
+    <p class="small">take your time, this little corner is yours</p>
+  </main>
 </section>
 
+<!-- HALAMAN 2 -->
+<section class="page" id="gift">
+  <span class="decoration one">✧</span>
+  <span class="decoration two">♡</span>
+  <span class="decoration four">🎀</span>
 
-<!-- 2. HALAMAN HADIAH -->
+  <main class="container">
+    <p class="eyebrow">step 01 · a little surprise</p>
+    <h2>A gift for you</h2>
+    <p class="description">Coba klik kotaknya. Ada sesuatu yang aku simpan di dalamnya.</p>
 
-<section class="screen" id="gift">
-    <div class="card">
-        <span class="decor one">✧</span>
-        <span class="decor two">♡</span>
-
-        <div class="eyebrow">something just for you</div>
-
-        <h2>A Little Gift</h2>
-
-        <p class="subtitle">
-            Sebelum lanjut, coba buka hadiah kecil ini dulu.
-            Semoga bisa bikin kamu tersenyum. 💗
-        </p>
-
-        <div class="gift" id="giftBox"
-             onclick="openGift()"
-             role="button"
-             tabindex="0"
-             aria-label="Buka hadiah">
-
-            <div class="gift-box"></div>
-            <div class="gift-lid"></div>
-            <div class="gift-bow">🎀</div>
-        </div>
-
-        <p class="small" id="giftMessage">
-            Klik kotak hadiahnya, yaa ♡
-        </p>
-
-        <button class="btn secondary" onclick="goTo('welcome')">
-            ← Back
-        </button>
-
-        <button class="btn" onclick="goTo('memories')">
-            Continue ♡
-        </button>
+    <div class="gift-area">
+      <button class="gift" id="giftBox" type="button" aria-label="Buka kotak hadiah">
+        <span class="bow"></span>
+        <span class="gift-lid"></span>
+        <span class="gift-box"></span>
+      </button>
     </div>
+
+    <p id="giftHint">klik kotak hadiahnya, ya ♡</p>
+    <div class="button-row">
+      <button class="button secondary" type="button" data-go="home">← Kembali</button>
+      <button class="button" id="giftNext" type="button" data-go="memories" hidden>Lanjutkan ♡</button>
+    </div>
+  </main>
 </section>
 
+<!-- HALAMAN 3 -->
+<section class="page" id="memories">
+  <span class="decoration one">♡</span>
+  <span class="decoration two">✦</span>
 
-<!-- 3. HALAMAN KENANGAN -->
+  <main class="container">
+    <p class="eyebrow">step 02 · little moments</p>
+    <h2>Our little memories</h2>
+    <p class="description">Beberapa hal sederhana yang jadi lebih berarti karena ada kamu.</p>
 
-<section class="screen" id="memories">
-    <div class="card">
-        <span class="decor one">♡</span>
-        <span class="decor two">✧</span>
+    <div class="gallery">
+      <article class="memory" style="--tilt:-3deg">
+        <!-- Ganti images/foto1.jpg dengan lokasi foto kalian -->
+        <img src="https://placehold.co/500x600/ffe3ed/c85f86?text=Your+Photo+1" alt="Foto kenangan pertama">
+        <span class="memory-title">Little things</span>
+        <small>hal kecil yang berkesan</small>
+      </article>
 
-        <div class="eyebrow">
-            little moments, lovely memories
-        </div>
+      <article class="memory" style="--tilt:2deg">
+        <img src="https://placehold.co/500x600/fff0cf/c85f86?text=Your+Photo+2" alt="Foto kenangan kedua">
+        <span class="memory-title">Our days</span>
+        <small>hari-hari bersama</small>
+      </article>
 
-        <h2>Our Little World ♡</h2>
-
-        <p class="subtitle">
-            Kadang hal-hal sederhana justru menjadi kenangan
-            yang paling ingin kita simpan.
-        </p>
-
-        <div class="memories">
-
-            <div class="polaroid">
-                <div class="photo">🌸</div>
-                <p class="caption">little moments</p>
-            </div>
-
-            <div class="polaroid">
-                <div class="photo">🧸</div>
-                <p class="caption">happy days</p>
-            </div>
-
-            <div class="polaroid">
-                <div class="photo">🌷</div>
-                <p class="caption">you & me</p>
-            </div>
-
-        </div>
-
-        <p class="small">
-            Tempat kecil untuk menyimpan cerita kita.
-        </p>
-
-        <button class="btn secondary" onclick="goTo('gift')">
-            ← Back
-        </button>
-
-        <button class="btn" onclick="goTo('envelope')">
-            There's a Letter ♡
-        </button>
+      <article class="memory" style="--tilt:-1deg">
+        <img src="https://placehold.co/500x600/e5dafa/8a6799?text=Your+Photo+3" alt="Foto kenangan ketiga">
+        <span class="memory-title">Favorite person</span>
+        <small>orang favoritku</small>
+      </article>
     </div>
+
+    <p class="description">Kamu bisa mengganti gambar di atas dengan foto kalian sendiri ♡</p>
+    <div class="button-row">
+      <button class="button secondary" type="button" data-go="gift">← Kembali</button>
+      <button class="button" type="button" data-go="envelope">Ada surat untukmu 💌</button>
+    </div>
+  </main>
 </section>
 
+<!-- HALAMAN 4 -->
+<section class="page" id="envelope">
+  <span class="decoration one">♡</span>
+  <span class="decoration two">✧</span>
 
-<!-- 4. HALAMAN AMPLOP -->
+  <main class="container">
+    <p class="eyebrow">step 03 · something from my heart</p>
+    <h2>One little letter</h2>
+    <p class="description">Ada beberapa kata yang ingin aku sampaikan. Buka amplopnya, ya.</p>
 
-<section class="screen" id="envelope">
-    <div class="card">
-        <span class="decor one">♡</span>
-        <span class="decor two">✧</span>
-
-        <div class="eyebrow">one last little thing</div>
-
-        <h2>
-            There's something<br>
-            <span class="script">I want you to read...</span>
-        </h2>
-
-        <p class="subtitle">
-            Ada beberapa kata yang ingin kusampaikan.
-            Semuanya sudah kusimpan di dalam amplop ini.
-            Buka kalau kamu sudah siap, ya. 💌
-        </p>
-
-        <div class="envelope-area"
-             id="envelopeArea"
-             onclick="openEnvelope()"
-             role="button"
-             tabindex="0"
-             aria-label="Buka amplop">
-
-            <div class="envelope"></div>
-
-            <div class="letter-preview">
-                for you, with love ♡
-            </div>
-
-            <div class="flap"></div>
-
-            <div class="seal">💗</div>
-        </div>
-
-        <button class="btn"
-                id="openLetterButton"
-                onclick="openEnvelope()">
-            Open My Letter 💌
-        </button>
-
-        <br>
-
-        <button class="btn secondary" onclick="goTo('memories')">
-            ← Back
-        </button>
+    <div class="envelope-area">
+      <button class="envelope" id="envelopeButton" type="button" aria-label="Buka amplop surat">
+        <span class="env-back"></span>
+        <span class="env-paper">for you, with love ♡</span>
+        <span class="env-front"></span>
+        <span class="env-flap"></span>
+        <span class="seal">♡</span>
+      </button>
     </div>
+
+    <p id="envelopeHint">ketuk amplop untuk membuka surat</p>
+    <div class="button-row">
+      <button class="button secondary" type="button" data-go="memories">← Kembali</button>
+      <button class="button" id="letterNext" type="button" data-go="letter" hidden>Baca suratnya ♡</button>
+    </div>
+  </main>
 </section>
 
+<!-- HALAMAN 5 -->
+<section class="page" id="letter">
+  <main class="container">
+    <p class="eyebrow">a letter, just for you</p>
+    <h2>Dear, you ♡</h2>
 
-<!-- 5. HALAMAN SURAT -->
+    <article class="letter">
+      <p>Hai, kamu.</p>
 
-<section class="screen" id="letter">
-    <div class="card">
-        <div class="eyebrow">a letter from me to you</div>
+      <p>
+        Aku mungkin nggak selalu bisa menyampaikan semuanya secara
+        langsung, jadi kali ini aku mau menuliskannya di sini.
+      </p>
 
-        <h2 class="script" style="font-size:3rem">
-            Dear, My Love ♡
-        </h2>
+      <p>
+        Makasih sudah hadir dan menjadi bagian dari hari-hariku.
+        Terima kasih untuk hal-hal kecil yang mungkin kelihatannya
+        biasa saja, tapi ternyata bisa bikin aku senang. Kadang,
+        sesederhana ngobrol sama kamu atau tahu kalau kamu baik-baik
+        saja sudah cukup bikin hariku terasa lebih baik.
+      </p>
 
-        <article class="letter-paper">
+      <p>
+        Aku nggak berharap semuanya harus selalu sempurna. Aku cuma
+        berharap kita bisa terus belajar memahami satu sama lain,
+        saling mendukung, dan tetap punya alasan untuk tersenyum
+        bersama. Kalau suatu hari terasa berat, semoga kita tetap
+        ingat bahwa kita nggak harus menghadapi semuanya sendirian.
+      </p>
 
-Hai, kamu. ♡
+      <p>
+        Semoga hal-hal baik selalu menemukan kamu. Semoga kamu diberi
+        banyak alasan untuk bahagia, diberi kekuatan saat lelah, dan
+        selalu ingat betapa berharganya diri kamu.
+      </p>
 
-Aku cuma mau bilang terima kasih karena sudah hadir
-dan menjadi bagian dari hari-hariku.
+      <p>
+        Ini memang cuma hadiah kecil, tapi aku membuatnya dengan
+        tulus. Semoga setiap bagian kecil di sini bisa bikin kamu
+        tersenyum, walaupun sedikit.
+      </p>
 
-Mungkin aku nggak selalu pandai menyampaikan apa
-yang aku rasakan, tapi aku harap kamu tahu kalau
-kehadiran kamu berarti buat aku.
+      <p class="signature">
+        With lots of love,<br>
+        someone who cares about you ♡
+      </p>
+    </article>
 
-Aku harap kamu selalu punya alasan untuk tersenyum,
-bahkan pada hari-hari yang terasa berat. Jangan lupa
-kalau kamu sudah berusaha sejauh ini, dan itu sesuatu
-yang patut kamu banggakan.
-
-Aku nggak bisa menjanjikan kalau setiap hari akan
-selalu mudah. Tapi aku berharap kita bisa terus belajar
-memahami satu sama lain, saling mendukung, dan
-menciptakan lebih banyak kenangan baik bersama.
-
-Terima kasih sudah menjadi kamu.
-Terima kasih sudah hadir di hidupku.
-
-Semoga hadiah kecil ini bisa membuat kamu tersenyum,
-meskipun cuma sebentar.
-
-Aku sayang kamu. ♡
-
-            <div class="signature">
-                With love, always ♡
-            </div>
-
-        </article>
-
-        <button class="btn secondary" onclick="goTo('envelope')">
-            Read Again
-        </button>
-
-        <button class="btn" onclick="goTo('ending')">
-            One Last Thing ♡
-        </button>
+    <div class="button-row">
+      <button class="button secondary" type="button" data-go="envelope">← Kembali</button>
+      <button class="button" type="button" data-go="ending">Ada satu hal lagi… ✨</button>
     </div>
+  </main>
 </section>
 
+<!-- HALAMAN 6 -->
+<section class="page" id="ending">
+  <span class="decoration one">♡</span>
+  <span class="decoration two">✦</span>
+  <span class="decoration three">🌷</span>
+  <span class="decoration four">♡</span>
 
-<!-- 6. HALAMAN PENUTUP + LINK HEYZINE -->
+  <main class="container card">
+    <span class="heart">💗</span>
+    <p class="eyebrow">the last little surprise</p>
+    <h2>And there's more…</h2>
+    <p class="description">
+      Ini belum semuanya. Aku juga menyiapkan satu tempat kecil
+      yang bisa kamu buka lewat tombol di bawah ini.
+    </p>
 
-<section class="screen" id="ending">
-    <div class="card">
-        <span class="decor one">♡</span>
-        <span class="decor two">✧</span>
-        <span class="decor three">🌷</span>
-        <span class="decor four">♡</span>
+    <a
+      class="button"
+      href="https://heyzine.com/flip-book/935b4868fa.html#page/12"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Open Our Special Place ♡ ↗</a>
 
-        <div class="ribbon">🌷</div>
-
-        <div class="eyebrow">the end... for now</div>
-
-        <h1>
-            Thank You<br>
-            <span class="script">for being you ♡</span>
-        </h1>
-
-        <p class="subtitle">
-            Ini memang cuma hadiah kecil, tapi aku harap
-            kamu bisa merasakan betapa berharganya kamu
-            buat aku.
-
-            Semoga masih banyak cerita indah yang bisa
-            kita buat bersama. Hari ini, besok, dan seterusnya. 💗
-        </p>
-
-        <div class="final-heart">💌 ♡ 🎀</div>
-
-        <p class="small">
-            there's one more little surprise waiting for you...
-        </p>
-
-        <!-- LINK HEYZINE MILIK KAMU -->
-
-        <a
-            class="btn"
-            href="https://heyzine.com/flip-book/935b4868fa.html#page/12"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            Open Our Special Place ♡ ↗
-
-        </a>
-
-        <br>
-
-        <button class="btn secondary" onclick="goTo('welcome')">
-            Start Again ♡
-        </button>
+    <div class="button-row">
+      <button class="button secondary" type="button" data-go="home">Ulangi dari awal ↺</button>
     </div>
+
+    <p class="small">thank you for being you · made with ♡</p>
+  </main>
 </section>
-
-
-<!-- FOOTER -->
-
-<div class="footer">
-    <span>♡ a little gift, made with love</span>
-
-    <button id="musicButton" onclick="toggleMusic()">
-        ♫ Music: off
-    </button>
-</div>
-
 
 <script>
-const screenIds = [
-    'welcome',
-    'gift',
-    'memories',
-    'envelope',
-    'letter',
-    'ending'
-];
+'use strict';
 
-let giftOpened = false;
-let envelopeOpened = false;
-let musicOn = false;
+// Navigasi ant halaman.
+const pages = Array.from(document.querySelectorAll('.page'));
+
+function showPage(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  pages.forEach(page => {
+    page.classList.toggle('active', page.id === id);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('[data-go]').forEach(button => {
+  button.addEventListener('click', () => {
+    showPage(button.dataset.go);
+  });
+});
+
+// Animasi kotak hadiah.
+const giftBox = document.getElementById('giftBox');
+const giftNext = document.getElementById('giftNext');
+const giftHint = document.getElementById('giftHint');
+
+giftBox.addEventListener('click', () => {
+  giftBox.classList.add('open');
+  giftHint.textContent = 'Yeay, hadiahnya terbuka! ♡';
+  giftNext.hidden = false;
+});
+
+// Animasi amplop surat.
+const envelopeButton = document.getElementById('envelopeButton');
+const letterNext = document.getElementById('letterNext');
+const envelopeHint = document.getElementById('envelopeHint');
+
+envelopeButton.addEventListener('click', () => {
+  envelopeButton.classList.add('open');
+  envelopeHint.textContent = 'Suratnya sudah terbuka ♡';
+  letterNext.hidden = false;
+});
+
+// Musik sederhana yang dihasilkan browser.
+// Tidak memerlukan file audio tambahan.
 let audioContext = null;
 let musicTimer = null;
+let musicPlaying = false;
+let noteIndex = 0;
 
+const notes = [
+  523.25, 659.25, 783.99, 659.25,
+  587.33, 698.46, 880.00, 698.46
+];
 
-function goTo(id) {
-    screenIds.forEach(screenId => {
-        document.getElementById(screenId)
-            .classList.toggle('active', screenId === id);
-    });
+function playNote() {
+  if (!audioContext || !musicPlaying) return;
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = 'sine';
+  oscillator.frequency.value = notes[noteIndex % notes.length];
+  noteIndex++;
+
+  gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.035, audioContext.currentTime + 0.04);
+  gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.4);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + 0.42);
 }
 
-
-function openGift() {
-    if (giftOpened) return;
-
-    giftOpened = true;
-
-    document.getElementById('giftBox')
-        .classList.add('open');
-
-    document.getElementById('giftMessage').textContent =
-        'A little surprise, just for you! ♡';
-}
-
-
-function openEnvelope() {
-    if (envelopeOpened) {
-        goTo('letter');
+document.getElementById('musicButton').addEventListener('click', async () => {
+  try {
+    if (!audioContext) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) {
+        alert('Browser kamu belum mendukung pemutar audio ini.');
         return;
+      }
+      audioContext = new AudioContextClass();
     }
 
-    envelopeOpened = true;
-
-    const envelope =
-        document.getElementById('envelopeArea');
-
-    const button =
-        document.getElementById('openLetterButton');
-
-    envelope.classList.add('open');
-
-    button.textContent = 'Opening your letter... 💌';
-    button.disabled = true;
-
-    setTimeout(() => {
-        button.disabled = false;
-        button.textContent = 'Read My Letter ♡';
-        goTo('letter');
-    }, 1100);
-}
-
-
-/* Tombol keyboard untuk hadiah dan amplop */
-
-document.getElementById('giftBox')
-    .addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            openGift();
-        }
-    });
-
-document.getElementById('envelopeArea')
-    .addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            openEnvelope();
-        }
-    });
-
-
-/* MUSIK LATAR */
-
-function toggleMusic() {
-    const button =
-        document.getElementById('musicButton');
-
-    const AudioContextClass =
-        window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioContextClass) {
-        button.textContent = '♫ Audio unavailable';
-        return;
+    if (audioContext.state === 'suspended') {
+      await audioContext.resume();
     }
 
-    if (!musicOn) {
-        audioContext = new AudioContextClass();
-        musicOn = true;
+    musicPlaying = !musicPlaying;
 
-        button.textContent = '♫ Music: on';
+    const button = document.getElementById('musicButton');
+    button.textContent = musicPlaying ? '♫̸' : '♫';
+    button.setAttribute(
+      'aria-label',
+      musicPlaying ? 'Matikan musik' : 'Nyalakan musik'
+    );
 
-        const notes = [
-            523.25,
-            659.25,
-            783.99,
-            659.25,
-            587.33,
-            698.46,
-            659.25,
-            523.25
-        ];
-
-        let index = 0;
-
-        function playNote() {
-            if (!musicOn || !audioContext) return;
-
-            const oscillator =
-                audioContext.createOscillator();
-
-            const gain =
-                audioContext.createGain();
-
-            oscillator.type = 'sine';
-
-            oscillator.frequency.value =
-                notes[index % notes.length];
-
-            gain.gain.setValueAtTime(
-                0.0001,
-                audioContext.currentTime
-            );
-
-            gain.gain.exponentialRampToValueAtTime(
-                0.025,
-                audioContext.currentTime + 0.08
-            );
-
-            gain.gain.exponentialRampToValueAtTime(
-                0.0001,
-                audioContext.currentTime + 0.6
-            );
-
-            oscillator.connect(gain);
-            gain.connect(audioContext.destination);
-
-            oscillator.start();
-
-            oscillator.stop(
-                audioContext.currentTime + 0.65
-            );
-
-            index++;
-
-            musicTimer = setTimeout(playNote, 750);
-        }
-
-        playNote();
-
+    if (musicPlaying) {
+      playNote();
+      musicTimer = window.setInterval(playNote, 520);
     } else {
-        musicOn = false;
-
-        clearTimeout(musicTimer);
-
-        if (audioContext) {
-            audioContext.close();
-            audioContext = null;
-        }
-
-        button.textContent = '♫ Music: off';
+      window.clearInterval(musicTimer);
+      musicTimer = null;
     }
-}
+  } catch (error) {
+    console.error('Audio tidak dapat diputar:', error);
+    alert('Musik belum bisa diputar di browser ini.');
+  }
+});
 </script>
 
 </body>
