@@ -4,21 +4,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff3f6">
 <title>A Little Gift for You ♡</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Sacramento&display=swap');
 
 :root {
-    --pink: #f5a8bb;
-    --rose: #d96f8b;
-    --dark: #a84c68;
-    --cream: #fffaf5;
-    --text: #75515b;
+    --pink: #f7c4d0;
+    --rose: #e78da5;
+    --dark: #b95370;
+    --cream: #fffaf4;
+    --text: #795761;
+    --border: #f0d2db;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,42 +35,53 @@ body {
     background:
         radial-gradient(circle at 10% 10%, #ffe0e9, transparent 35%),
         radial-gradient(circle at 90% 90%, #ffe8d9, transparent 35%),
-        #fff3f6;
+        linear-gradient(135deg, #fff7f8, #fff0f4);
     overflow-x: hidden;
 }
 
-button, a {
+button,
+a {
     font-family: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 .screen {
     display: none;
     min-height: 100vh;
-    padding: 35px 18px 75px;
+    padding: 65px 18px 75px;
     align-items: center;
     justify-content: center;
 }
 
 .screen.active {
     display: flex;
-    animation: fadeIn .7s ease;
+    animation: fadeIn .65s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .card {
     width: 100%;
-    max-width: 760px;
+    max-width: 780px;
+    padding: clamp(35px, 6vw, 60px) 25px;
+    position: relative;
     text-align: center;
-    padding: 45px 25px;
-    background: rgba(255, 250, 247, .92);
-    border: 1px solid #f3d3dc;
+    background: rgba(255, 250, 247, .94);
+    border: 1px solid var(--border);
     border-radius: 28px;
     box-shadow: 0 20px 60px #c46b7b18;
-    position: relative;
 }
 
 .card::before {
@@ -76,32 +93,30 @@ button, a {
     pointer-events: none;
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
     position: relative;
     z-index: 1;
 }
 
 h1 {
     color: var(--dark);
-    font-size: clamp(2.3rem, 8vw, 4rem);
-    line-height: 1.15;
+    font-size: clamp(2.4rem, 8vw, 4.4rem);
+    line-height: 1.12;
+    margin: 20px 0;
 }
 
 h2 {
     color: var(--dark);
-    font-size: clamp(1.7rem, 5vw, 2.5rem);
+    font-size: clamp(1.7rem, 5vw, 2.7rem);
+    margin: 15px 0;
 }
 
 .script {
     font-family: 'Sacramento', cursive;
-    font-weight: normal;
     color: var(--rose);
-}
-
-.subtitle {
-    max-width: 480px;
-    margin: 20px auto;
-    line-height: 1.9;
+    font-weight: 400;
 }
 
 .eyebrow {
@@ -109,18 +124,35 @@ h2 {
     font-size: .75rem;
     letter-spacing: 3px;
     text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.subtitle {
+    max-width: 510px;
+    margin: 20px auto 28px;
+    line-height: 1.9;
+    font-size: .98rem;
 }
 
 .ribbon {
     font-size: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.small {
+    font-size: .8rem;
+    color: #a77d86;
+    line-height: 1.7;
 }
 
 .btn {
     display: inline-block;
     position: relative;
     z-index: 2;
-    margin: 8px 4px;
-    padding: 14px 24px;
+    margin: 7px 4px;
+    padding: 14px 23px;
     border: none;
     border-radius: 40px;
     background: linear-gradient(135deg, #ee9db1, #d96f8b);
@@ -128,7 +160,6 @@ h2 {
     font-weight: 700;
     text-decoration: none;
     box-shadow: 0 8px 20px #d96f8b35;
-    cursor: pointer;
     transition: .25s;
 }
 
@@ -138,50 +169,65 @@ h2 {
 }
 
 .btn.secondary {
-    color: var(--dark);
     background: white;
+    color: var(--dark);
     border: 1px solid #efc4d0;
     box-shadow: none;
-}
-
-.small {
-    font-size: .8rem;
-    color: #a77d86;
 }
 
 .decor {
     font-size: 1.8rem;
     position: absolute;
     animation: float 4s ease-in-out infinite;
+    z-index: 1;
 }
 
-.decor.one { top: 20px; left: 25px; }
-.decor.two { top: 25px; right: 25px; }
-.decor.three { bottom: 20px; left: 30px; }
-.decor.four { bottom: 20px; right: 30px; }
+.decor.one {
+    top: 22px;
+    left: 25px;
+}
+
+.decor.two {
+    top: 25px;
+    right: 25px;
+}
+
+.decor.three {
+    bottom: 22px;
+    left: 30px;
+}
+
+.decor.four {
+    bottom: 20px;
+    right: 30px;
+}
 
 @keyframes float {
-    50% { transform: translateY(-10px) rotate(8deg); }
+    50% {
+        transform: translateY(-10px) rotate(8deg);
+    }
 }
 
-/* GIFT BOX */
+/* HALAMAN HADIAH */
 
 .gift {
-    width: 220px;
-    height: 190px;
+    width: 230px;
+    height: 200px;
     margin: 35px auto;
     position: relative;
     cursor: pointer;
+    z-index: 1;
 }
 
 .gift-box {
     position: absolute;
     width: 180px;
-    height: 115px;
-    left: 20px;
+    height: 120px;
+    left: 25px;
     bottom: 0;
-    background: #ee9fb3;
+    background: linear-gradient(135deg, #f8bdcb, #e78da5);
     border-radius: 8px;
+    box-shadow: 0 12px 25px #c46b7b20;
 }
 
 .gift-box::before {
@@ -190,50 +236,61 @@ h2 {
     width: 35px;
     height: 100%;
     left: 72px;
-    background: #ffe1e8;
+    background: #ffe6eb;
 }
 
 .gift-lid {
     position: absolute;
     width: 205px;
     height: 35px;
-    left: 8px;
+    left: 12px;
     top: 40px;
-    background: #f4b6c5;
+    background: #f5b2c2;
     border-radius: 6px;
     transition: .8s;
 }
 
+.gift-lid::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 100%;
+    left: 85px;
+    background: #ffe6eb;
+}
+
 .gift-bow {
     position: absolute;
-    top: 0;
-    left: 85px;
+    top: -5px;
+    left: 90px;
     font-size: 45px;
     transition: .8s;
 }
 
 .gift.open .gift-lid {
-    transform: translateY(-75px) rotate(-12deg);
+    transform: translateY(-80px) rotate(-12deg);
 }
 
 .gift.open .gift-bow {
-    transform: translateY(-75px) rotate(-12deg);
+    transform: translateY(-80px) rotate(-12deg);
 }
 
-/* MEMORIES */
+/* HALAMAN KENANGAN */
 
 .memories {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    gap: 13px;
     margin: 30px 0;
+    position: relative;
+    z-index: 1;
 }
 
 .polaroid {
     background: white;
     padding: 9px 9px 16px;
     box-shadow: 0 5px 18px #a84c6818;
-    transform: rotate(-2deg);
+    transform: rotate(-3deg);
 }
 
 .polaroid:nth-child(2) {
@@ -245,28 +302,29 @@ h2 {
 }
 
 .photo {
-    height: 125px;
+    height: 145px;
     display: grid;
     place-items: center;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     background: linear-gradient(135deg, #ffe0e8, #fff0dc);
 }
 
 .caption {
     font-family: 'Sacramento', cursive;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 10px 0 0;
 }
 
-/* ENVELOPE */
+/* AMPLOP */
 
 .envelope-area {
     position: relative;
     width: min(320px, 85vw);
-    height: 215px;
+    height: 225px;
     margin: 35px auto;
     cursor: pointer;
     perspective: 800px;
+    z-index: 1;
 }
 
 .envelope {
@@ -305,8 +363,9 @@ h2 {
     bottom: 25px;
     left: 8%;
     width: 84%;
-    height: 140px;
+    height: 145px;
     background: #fff9ec;
+    border: 1px solid #eedbc2;
     display: grid;
     place-items: center;
     font-family: 'Sacramento', cursive;
@@ -336,12 +395,12 @@ h2 {
     opacity: 0;
 }
 
-/* LETTER */
+/* SURAT */
 
 .letter-paper {
     position: relative;
     z-index: 1;
-    max-width: 580px;
+    max-width: 590px;
     margin: 25px auto;
     padding: clamp(25px, 6vw, 45px);
     background: #fff9ec;
@@ -353,25 +412,54 @@ h2 {
     transform: rotate(-.3deg);
 }
 
+.letter-paper::after {
+    content: "♡";
+    position: absolute;
+    top: 12px;
+    right: 17px;
+    color: #d98a9c;
+    font-size: 1.5rem;
+}
+
 .signature {
     font-family: 'Sacramento', cursive;
     font-size: 2rem;
     color: var(--dark);
+    margin-top: 20px;
 }
+
+/* HALAMAN AKHIR */
+
+.final-heart {
+    font-size: 2.5rem;
+    margin: 25px 0;
+    animation: heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* FOOTER */
 
 .footer {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     padding: 12px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fffaf5e8;
+    gap: 10px;
+    background: #fffaf5ed;
     border-top: 1px solid #f3d3dc;
     backdrop-filter: blur(8px);
     color: #a77d86;
     font-size: .75rem;
+    z-index: 10;
 }
 
 #musicButton {
@@ -383,18 +471,47 @@ h2 {
     cursor: pointer;
 }
 
-@media(max-width: 480px) {
-    .card { padding: 40px 18px; }
-    .photo { height: 90px; font-size: 1.8rem; }
-    .polaroid { padding: 6px 6px 12px; }
-    .caption { font-size: 1.1rem; }
+@media(max-width: 520px) {
+    .card {
+        padding: 40px 18px;
+    }
+
+    .photo {
+        height: 95px;
+        font-size: 2rem;
+    }
+
+    .polaroid {
+        padding: 6px 6px 12px;
+    }
+
+    .caption {
+        font-size: 1.15rem;
+    }
+
+    .memories {
+        gap: 8px;
+    }
+
+    .footer {
+        font-size: .68rem;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HALAMAN 1: PEMBUKA -->
+<!-- 1. HALAMAN PEMBUKA -->
 
 <section class="screen active" id="welcome">
     <div class="card">
@@ -404,9 +521,11 @@ h2 {
         <span class="decor four">♡</span>
 
         <div class="ribbon">🎀</div>
+
         <div class="eyebrow">a tiny little surprise</div>
 
-        <h1>I made something<br>
+        <h1>
+            I made something<br>
             <span class="script">for you...</span>
         </h1>
 
@@ -420,15 +539,20 @@ h2 {
             Open Your Gift ♡
         </button>
 
-        <p class="small">made with a little love ✿</p>
+        <p class="small">
+            dibuat dengan sedikit cinta, khusus untuk kamu ✿
+        </p>
     </div>
 </section>
 
 
-<!-- HALAMAN 2: HADIAH -->
+<!-- 2. HALAMAN HADIAH -->
 
 <section class="screen" id="gift">
     <div class="card">
+        <span class="decor one">✧</span>
+        <span class="decor two">♡</span>
+
         <div class="eyebrow">something just for you</div>
 
         <h2>A Little Gift</h2>
@@ -438,7 +562,12 @@ h2 {
             Semoga bisa bikin kamu tersenyum. 💗
         </p>
 
-        <div class="gift" id="giftBox" onclick="openGift()">
+        <div class="gift" id="giftBox"
+             onclick="openGift()"
+             role="button"
+             tabindex="0"
+             aria-label="Buka hadiah">
+
             <div class="gift-box"></div>
             <div class="gift-lid"></div>
             <div class="gift-bow">🎀</div>
@@ -459,11 +588,16 @@ h2 {
 </section>
 
 
-<!-- HALAMAN 3: KENANGAN -->
+<!-- 3. HALAMAN KENANGAN -->
 
 <section class="screen" id="memories">
     <div class="card">
-        <div class="eyebrow">little moments, lovely memories</div>
+        <span class="decor one">♡</span>
+        <span class="decor two">✧</span>
+
+        <div class="eyebrow">
+            little moments, lovely memories
+        </div>
 
         <h2>Our Little World ♡</h2>
 
@@ -473,6 +607,7 @@ h2 {
         </p>
 
         <div class="memories">
+
             <div class="polaroid">
                 <div class="photo">🌸</div>
                 <p class="caption">little moments</p>
@@ -487,6 +622,7 @@ h2 {
                 <div class="photo">🌷</div>
                 <p class="caption">you & me</p>
             </div>
+
         </div>
 
         <p class="small">
@@ -504,23 +640,32 @@ h2 {
 </section>
 
 
-<!-- HALAMAN 4: AMPLOP -->
+<!-- 4. HALAMAN AMPLOP -->
 
 <section class="screen" id="envelope">
     <div class="card">
+        <span class="decor one">♡</span>
+        <span class="decor two">✧</span>
+
         <div class="eyebrow">one last little thing</div>
 
-        <h2>There's something<br>
+        <h2>
+            There's something<br>
             <span class="script">I want you to read...</span>
         </h2>
 
         <p class="subtitle">
             Ada beberapa kata yang ingin kusampaikan.
             Semuanya sudah kusimpan di dalam amplop ini.
+            Buka kalau kamu sudah siap, ya. 💌
         </p>
 
-        <div class="envelope-area" id="envelopeArea"
-             onclick="openEnvelope()">
+        <div class="envelope-area"
+             id="envelopeArea"
+             onclick="openEnvelope()"
+             role="button"
+             tabindex="0"
+             aria-label="Buka amplop">
 
             <div class="envelope"></div>
 
@@ -533,7 +678,8 @@ h2 {
             <div class="seal">💗</div>
         </div>
 
-        <button class="btn" id="openLetterButton"
+        <button class="btn"
+                id="openLetterButton"
                 onclick="openEnvelope()">
             Open My Letter 💌
         </button>
@@ -547,7 +693,7 @@ h2 {
 </section>
 
 
-<!-- HALAMAN 5: SURAT -->
+<!-- 5. HALAMAN SURAT -->
 
 <section class="screen" id="letter">
     <div class="card">
@@ -557,26 +703,39 @@ h2 {
             Dear, My Love ♡
         </h2>
 
-        <article class="letter-paper" id="letterContent">Hai, kamu. ♡
+        <article class="letter-paper">
 
-Aku cuma mau bilang terima kasih karena sudah hadir dan menjadi bagian dari hari-hariku.
+Hai, kamu. ♡
 
-Mungkin aku nggak selalu pandai menyampaikan apa yang aku rasakan, tapi aku harap kamu tahu kalau kehadiran kamu berarti buat aku.
+Aku cuma mau bilang terima kasih karena sudah hadir
+dan menjadi bagian dari hari-hariku.
 
-Aku harap kamu selalu punya alasan untuk tersenyum, bahkan pada hari-hari yang terasa berat. Jangan lupa kalau kamu sudah berusaha sejauh ini, dan itu sesuatu yang patut kamu banggakan.
+Mungkin aku nggak selalu pandai menyampaikan apa
+yang aku rasakan, tapi aku harap kamu tahu kalau
+kehadiran kamu berarti buat aku.
 
-Aku nggak bisa menjanjikan kalau setiap hari akan selalu mudah. Tapi aku berharap kita bisa terus belajar memahami satu sama lain, saling mendukung, dan menciptakan lebih banyak kenangan baik bersama.
+Aku harap kamu selalu punya alasan untuk tersenyum,
+bahkan pada hari-hari yang terasa berat. Jangan lupa
+kalau kamu sudah berusaha sejauh ini, dan itu sesuatu
+yang patut kamu banggakan.
+
+Aku nggak bisa menjanjikan kalau setiap hari akan
+selalu mudah. Tapi aku berharap kita bisa terus belajar
+memahami satu sama lain, saling mendukung, dan
+menciptakan lebih banyak kenangan baik bersama.
 
 Terima kasih sudah menjadi kamu.
 Terima kasih sudah hadir di hidupku.
 
-Semoga hadiah kecil ini bisa membuat kamu tersenyum, meskipun cuma sebentar.
+Semoga hadiah kecil ini bisa membuat kamu tersenyum,
+meskipun cuma sebentar.
 
 Aku sayang kamu. ♡
 
             <div class="signature">
                 With love, always ♡
             </div>
+
         </article>
 
         <button class="btn secondary" onclick="goTo('envelope')">
@@ -590,44 +749,49 @@ Aku sayang kamu. ♡
 </section>
 
 
-<!-- HALAMAN 6: PENUTUP + LINK KAMU -->
+<!-- 6. HALAMAN PENUTUP + LINK HEYZINE -->
 
 <section class="screen" id="ending">
     <div class="card">
         <span class="decor one">♡</span>
         <span class="decor two">✧</span>
+        <span class="decor three">🌷</span>
+        <span class="decor four">♡</span>
 
         <div class="ribbon">🌷</div>
 
         <div class="eyebrow">the end... for now</div>
 
-        <h1>Thank You<br>
+        <h1>
+            Thank You<br>
             <span class="script">for being you ♡</span>
         </h1>
 
         <p class="subtitle">
             Ini memang cuma hadiah kecil, tapi aku harap
-            kamu bisa merasakan betapa berharganya kamu buat aku.
+            kamu bisa merasakan betapa berharganya kamu
+            buat aku.
 
-            Semoga masih banyak cerita indah yang bisa kita
-            buat bersama. Hari ini, besok, dan seterusnya. 💗
+            Semoga masih banyak cerita indah yang bisa
+            kita buat bersama. Hari ini, besok, dan seterusnya. 💗
         </p>
 
-        <div style="font-size:2rem;margin:25px">
-            💌 <span style="color:#d96f8b">♡</span> 🎀
-        </div>
+        <div class="final-heart">💌 ♡ 🎀</div>
 
         <p class="small">
             there's one more little surprise waiting for you...
         </p>
 
-        <!-- LINK HEYZINE KAMU SUDAH DIMASUKKAN -->
+        <!-- LINK HEYZINE MILIK KAMU -->
+
         <a
             class="btn"
             href="https://heyzine.com/flip-book/935b4868fa.html#page/12"
             target="_blank"
             rel="noopener noreferrer">
+
             Open Our Special Place ♡ ↗
+
         </a>
 
         <br>
@@ -638,6 +802,8 @@ Aku sayang kamu. ♡
     </div>
 </section>
 
+
+<!-- FOOTER -->
 
 <div class="footer">
     <span>♡ a little gift, made with love</span>
@@ -664,6 +830,7 @@ let musicOn = false;
 let audioContext = null;
 let musicTimer = null;
 
+
 function goTo(id) {
     screenIds.forEach(screenId => {
         document.getElementById(screenId)
@@ -675,6 +842,7 @@ function goTo(id) {
         behavior: 'smooth'
     });
 }
+
 
 function openGift() {
     if (giftOpened) return;
@@ -688,6 +856,7 @@ function openGift() {
         'A little surprise, just for you! ♡';
 }
 
+
 function openEnvelope() {
     if (envelopeOpened) {
         goTo('letter');
@@ -696,8 +865,11 @@ function openEnvelope() {
 
     envelopeOpened = true;
 
-    const envelope = document.getElementById('envelopeArea');
-    const button = document.getElementById('openLetterButton');
+    const envelope =
+        document.getElementById('envelopeArea');
+
+    const button =
+        document.getElementById('openLetterButton');
 
     envelope.classList.add('open');
 
@@ -712,29 +884,54 @@ function openEnvelope() {
 }
 
 
-/* Nada lembut sederhana menggunakan Web Audio API.
-   Audio baru dimulai setelah pengunjung menekan tombol musik. */
+/* Tombol keyboard untuk hadiah dan amplop */
+
+document.getElementById('giftBox')
+    .addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openGift();
+        }
+    });
+
+document.getElementById('envelopeArea')
+    .addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openEnvelope();
+        }
+    });
+
+
+/* MUSIK LATAR */
 
 function toggleMusic() {
-    const button = document.getElementById('musicButton');
+    const button =
+        document.getElementById('musicButton');
+
+    const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) {
+        button.textContent = '♫ Audio unavailable';
+        return;
+    }
 
     if (!musicOn) {
-        const AudioContextClass =
-            window.AudioContext || window.webkitAudioContext;
-
-        if (!AudioContextClass) {
-            button.textContent = '♫ Audio unavailable';
-            return;
-        }
-
         audioContext = new AudioContextClass();
         musicOn = true;
 
         button.textContent = '♫ Music: on';
 
         const notes = [
-            523.25, 659.25, 783.99, 659.25,
-            587.33, 698.46, 659.25, 523.25
+            523.25,
+            659.25,
+            783.99,
+            659.25,
+            587.33,
+            698.46,
+            659.25,
+            523.25
         ];
 
         let index = 0;
@@ -742,11 +939,16 @@ function toggleMusic() {
         function playNote() {
             if (!musicOn || !audioContext) return;
 
-            const oscillator = audioContext.createOscillator();
-            const gain = audioContext.createGain();
+            const oscillator =
+                audioContext.createOscillator();
+
+            const gain =
+                audioContext.createGain();
 
             oscillator.type = 'sine';
-            oscillator.frequency.value = notes[index % notes.length];
+
+            oscillator.frequency.value =
+                notes[index % notes.length];
 
             gain.gain.setValueAtTime(
                 0.0001,
@@ -767,7 +969,10 @@ function toggleMusic() {
             gain.connect(audioContext.destination);
 
             oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.65);
+
+            oscillator.stop(
+                audioContext.currentTime + 0.65
+            );
 
             index++;
 
